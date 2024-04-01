@@ -4,10 +4,10 @@ It is a **bash** + **python** script that provides a menu-driven interface for p
 
 ## Functions for Different Task
 
-- Option 1: Generate keys required for signing (a_genkey.py).
-- Option 2: Sign systemd-boot using current keys (b_sign.py). Requires option 1.
-- Option 3: Remove EFI signature from systemd-boot (c_rmsign.py).
-- Option 4: Verify EFI signatures in systemd-boot (d_verify.py).
+- Option 1: Generate keys required for signing.
+- Option 2: Sign systemd-boot using current keys. Requires option 1.
+- Option 3: Remove EFI signature from systemd-boot.
+- Option 4: Verify EFI signatures in systemd-boot.
 - Option 5: Exit the script.
 - Input Handling: After each task is completed, the user is prompted to choose whether to return to the main menu or exit the script.
 
