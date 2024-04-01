@@ -15,7 +15,7 @@ It is a **bash** + **python** script that provides a menu-driven interface for p
 
 - Make sure you have Python3 installed on your system.
 - Ensure that the Python scripts (a_genkey.py, b_sign.py, c_rmsign.py, and d_verify.py) exist in the appropriate directories (lib) relative to the script (systemd_sb.sh).
-- Run the script by executing ./systemd_sb.sh in your terminal.
+- Run the script by executing systemd_sb.sh in your terminal.
   
   ```zsh
   sh systemd_sb.sh
