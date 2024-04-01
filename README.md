@@ -28,7 +28,7 @@ This script provides a convenient way to interact with the underlying Python scr
 
 ![menu](https://github.com/iamyounix/systemd_sb/assets/72515939/9da5d424-78ee-4b82-83c0-8eafc485de15)
 
-### Option 1
+## Example
 
 ![option 1](https://github.com/iamyounix/systemd_sb/assets/72515939/0f25dff8-b5ba-4c8d-8bee-afd77ff996ee)
 
@@ -46,7 +46,7 @@ This script provides a convenient way to interact with the underlying Python scr
   -  organization = "editable"
   -  common_name = "editable"
 
-**Option `1` Example:**
+**Option `1`:**
 
 ```zsh
 ❯ sh systemd_sb.sh 
@@ -165,7 +165,7 @@ Press 'm' to return to the main menu, 'q' to quit:
 
 ## Enroll
 
-**This key is required to be enroll via BIOS**
+This key is required to be enroll via BIOS
 
 - db.auth    
 - Additional Microsoft db.auth
@@ -173,7 +173,7 @@ Press 'm' to return to the main menu, 'q' to quit:
 - Additional Microsoft Windows KEK.auth
 - PK.auth
 
-**Step**
+Step
 
 - Go to BIOS, find secureboot option, delete current keys
 - Enroll db.auth and Additional Microsoft db.auth for Authorized Signature Database option.
