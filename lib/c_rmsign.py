@@ -25,3 +25,7 @@ def remove_signatures(directory):
 
 boot_dir = "/boot"
 remove_signatures(boot_dir)
+
+print("----------------------------------------------------------------------------")
+print_message("Option 3 Success", "green")
+print("----------------------------------------------------------------------------")
