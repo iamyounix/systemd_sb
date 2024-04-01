@@ -64,3 +64,7 @@ if __name__ == "__main__":
     dir_to_sign = "/boot"
     # Call the function to sign files in the directory
     sign_systemd(dir_to_sign)
+
+print("----------------------------------------------------------------------------")
+print_message("Option 2 Success", "green")
+print("----------------------------------------------------------------------------")
