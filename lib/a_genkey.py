@@ -67,7 +67,7 @@ def generate_certificate():
 
     try:
         print_message("Generating PK", "blue")
-        ok_path = Path(keys_dir) / "PK"
+        pk_path = Path(keys_dir) / "PK"
         subprocess.run(
             [
                 "openssl",
@@ -76,7 +76,7 @@ def generate_certificate():
                 "rsa:4096",
                 "-nodes",
                 "-keyout",
-                f"{ok_path}.key",
+                f"{pk_path}.key",
                 "-new",
                 "-x509",
                 "-sha256",
@@ -85,7 +85,7 @@ def generate_certificate():
                 "-subj",
                 f"/C={country}/ST={state}/L={locality}/O={organization}/CN={common_name} Platform Key/",
                 "-out",
-                f"{ok_path}.crt",
+                f"{pk_path}.crt",
             ],
             check=True,
             stdout=subprocess.DEVNULL,  # Suppress stdout
@@ -98,9 +98,9 @@ def generate_certificate():
                 "-outform",
                 "DER",
                 "-in",
-                f"{ok_path}.crt",
+                f"{pk_path}.crt",
                 "-out",
-                f"{ok_path}.cer",
+                f"{pk_path}.cer",
             ],
             check=True,
             stdout=subprocess.DEVNULL,  # Suppress stdout
@@ -111,8 +111,8 @@ def generate_certificate():
                 "cert-to-efi-sig-list",
                 "-g",
                 guid_content,
-                f"{ok_path}.crt",
-                f"{ok_path}.esl",
+                f"{pk_path}.crt",
+                f"{pk_path}.esl",
             ],
             check=True,
             stdout=subprocess.DEVNULL,  # Suppress stdout
@@ -124,41 +124,41 @@ def generate_certificate():
                 "-g",
                 guid_content,
                 "-k",
-                f"{ok_path}.key",
+                f"{pk_path}.key",
                 "-c",
-                f"{ok_path}.crt",
+                f"{pk_path}.crt",
                 "PK",
-                f"{ok_path}.esl",
-                f"{ok_path}.auth",
+                f"{pk_path}.esl",
+                f"{pk_path}.auth",
             ],
             check=True,
             stdout=subprocess.DEVNULL,  # Suppress stdout
             stderr=subprocess.DEVNULL,  # Suppress stderr
         )
         print_message("Generating PK successful.", "green")
-        calculate_checksums(ok_path)
+        calculate_checksums(pk_path)
 
         print_message("Generating noPK", "blue")
-        no_ok_path = Path(keys_dir) / "noPK"
+        no_pk_path = Path(keys_dir) / "noPK"
         subprocess.run(
             [
                 "sign-efi-sig-list",
                 "-g",
                 guid_content,
                 "-c",
-                f"{ok_path}.crt",
+                f"{pk_path}.crt",
                 "-k",
-                f"{ok_path}.key",
+                f"{pk_path}.key",
                 "PK",
                 "/dev/null",
-                f"{no_ok_path}.auth",
+                f"{no_pk_path}.auth",
             ],
             check=True,
             stdout=subprocess.DEVNULL,  # Suppress stdout
             stderr=subprocess.DEVNULL,  # Suppress stderr
         )
         print_message("Generating noPK successful.", "green")
-        calculate_checksums(no_ok_path)
+        calculate_checksums(no_pk_path)
 
         print_message("Generating KEK", "blue")
         kek_path = Path(keys_dir) / "KEK"
@@ -536,10 +536,10 @@ except Exception as e:
 
 keys_dir = "keys"
 kek_path = Path(keys_dir)
-ok_path = Path(keys_dir)
+pk_path = Path(keys_dir)
 
 kek_cert = kek_path / "KEK.crt"
-pk_cert = ok_path / "PK.crt"
+pk_cert = pk_path / "PK.crt"
 
 try:
     subprocess.run(
@@ -570,7 +570,7 @@ try:
             "-g",
             owner_guid,
             "-k",
-            f"{ok_path}/PK.key",
+            f"{pk_path}/PK.key",
             "-c",
             pk_cert,
             "KEK",
