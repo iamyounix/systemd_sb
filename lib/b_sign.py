@@ -19,7 +19,6 @@ def show_notification():
     notification = """
     Warning:
     * The next process will automatically sign your systemd-boot drivers directly without making any copies.
-    * If you are not sure about this, or just use this tool only for signing OpenCore, hit:
     + "Ctrl+C" to kill the process, or;
     + "Ctrl+Z" to suspend the process.
     * This will sign:
